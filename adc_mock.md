@@ -11,3 +11,23 @@ Authenticate with google, access the corresponding data project, then view and m
 > gcloud config set project ail-blockathon-portal
 > gsutil ls gs://ail-blockathon-portal.appspot.com/sources
 ```
+
+## Detect received source files and verify their timestamps
+
+The service machine monitoring uploaded files requires an opentimestamps client library. For simplicity, here are the install steps for the python opentimestamps library compatible on most architectures.
+
+```
+pip3 install opentimestamps-client
+```
+
+Usage for stamping
+```
+> ots stamp <filename>
+```
+
+Usage for verifying
+```
+> ots verify <filename>
+```
+
+Set up a cronjob to repeatedly verify that each stamp file corresponds to the source file submitted.
